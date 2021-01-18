@@ -7,7 +7,7 @@ module Fastlane
         slack_icon = params[:slack_icon]
         chat_message = params[:chat_message]
         slack_url = params[:slack_url]
-        slack(
+        other_action.slack(
           message: chat_message,
           success: true,
           slack_url: slack_url,
