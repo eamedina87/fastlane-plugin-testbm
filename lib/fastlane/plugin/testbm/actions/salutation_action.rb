@@ -5,6 +5,7 @@ module Fastlane
     class SalutationAction < Action
       def self.run(params)
         UI.message("Hello World!" + params[:person_name])
+        UI.message("#{ENV["TEST_VALUE"]} text from local ENV")
       end
 
       def self.description
