@@ -4,7 +4,7 @@ module Fastlane
   module Actions
     class ChatAction < Action
       def self.run(params)
-        slack_icon = params(:slack_icon)
+        slack_icon = params[:slack_icon]
         chat_message = params[:chat_message]
         slack_url = params[:slack_url]
         slack(
