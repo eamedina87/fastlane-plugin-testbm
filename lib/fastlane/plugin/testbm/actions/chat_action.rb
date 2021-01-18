@@ -11,9 +11,8 @@ module Fastlane
           message: chat_message,
           success: true,
           slack_url: slack_url,
-          default_payloads: [:lane, :git_branch, :git_author],
           icon_url: slack_icon,
-          username: "Bemobile Fastlane Plugin"
+          username: "Bemobile Fastlane Plugin - #{ENV["PRIVATE_APP_NAME"]}"
         )        
         UI.message("Message sent to Slack!")
       end
