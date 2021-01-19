@@ -1,19 +1,19 @@
 require 'fastlane/action'
+require_relative '../helper/testbm_helper'
 
 module Fastlane
   module Actions
     class ChatAction < Action
       def self.run(params)
         slack_icon = params[:slack_icon]
-        chat_message = params[:chat_message]
-        slack_url = params[:slack_url]
+        message_text = params[:message_text]
         other_action.slack(
-          message: chat_message,
+          message: message_text,
           success: true,
-          slack_url: slack_url,
           icon_url: slack_icon,
           username: "Bemobile Fastlane Plugin - #{ENV["PRIVATE_APP_NAME"]}"
-        )        
+        )       
+        Helper::TestbmHelper.slack_func_notify("Message from helper.")
         UI.message("Message sent to Slack!")
       end
 
@@ -37,7 +37,7 @@ module Fastlane
       def self.available_options
         [
           FastlaneCore::ConfigItem.new(key: :chat_message,
-                                   env_name: "CHAT_MESSAGE",
+                                   env_name: "MESSAGE_TEXT",
                                 description: "The chat message to be sent to Slack",
                                    optional: false,
                                        type: String),
@@ -45,12 +45,7 @@ module Fastlane
                                     env_name: "SLACK_ICON",
                                 description: "The icon to be posted to Slack",
                                     optional: false,
-                                        type: String),
-          FastlaneCore::ConfigItem.new(key: :slack_url,
-                                    env_name: "SLACK_URL",
-                                description: "The webhook's url to where we will post in Slack",
-                                    optional: false,
-                                        type: String),
+                                        type: String)
         ]
       end
 
