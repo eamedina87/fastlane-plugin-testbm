@@ -1,9 +1,8 @@
 require 'fastlane/action'
-require_relative '../helper/testbm_helper'
 
 module Fastlane
   module Actions
-    class ChatAction < Action
+    class BmslackAction < Action
       def self.run(params)
         slack_icon = params[:slack_icon]
         message_text = params[:message_text]
@@ -11,18 +10,18 @@ module Fastlane
           message: message_text,
           success: true,
           icon_url: slack_icon,
+          default_payloads: [:lane, :git_branch, :git_author],
           username: "Bemobile Fastlane Plugin - #{ENV["PRIVATE_APP_NAME"]}"
         )       
-        Helper::TestbmHelper.slack_func_notify("Message from")
         UI.message("Message sent to Slack!")
       end
 
       def self.description
-        "Returns hello world"
+        "Sends a message to a Slack chat specified in the SLACK_URL environment variable."
       end
 
       def self.authors
-        ["Bemobile"]
+        ["Erick, Legna @ Bemobile."]
       end
 
       def self.return_value
@@ -30,8 +29,10 @@ module Fastlane
       end
 
       def self.details
-        # Optional:
-        "Just a test plugin"
+        "Sends a message to a Slack webhook. The message must be passed to the function as a parameter named message_text. 
+         An icon must be specified as a param named slack_icon, or as an environment variable named SLACK_ICON.
+         The webhook URL must be specified as an environment variable called SLACK_URL.
+         The username which sends the message can be appendend with the environment variable called PRIVATE_APP_NAME."
       end
 
       def self.available_options
@@ -43,17 +44,13 @@ module Fastlane
                                        type: String),
           FastlaneCore::ConfigItem.new(key: :slack_icon,
                                     env_name: "SLACK_ICON",
-                                description: "The icon to be posted to Slack",
+                                description: "The user icon to be posted to Slack",
                                     optional: false,
                                         type: String)
         ]
       end
 
       def self.is_supported?(platform)
-        # Adjust this if your plugin only works for a particular platform (iOS vs. Android, for example)
-        # See: https://docs.fastlane.tools/advanced/#control-configuration-by-lane-and-by-platform
-        #
-        # [:ios, :mac, :android].include?(platform)
         true
       end
     end
