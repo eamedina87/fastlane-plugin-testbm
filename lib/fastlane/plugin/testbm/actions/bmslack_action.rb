@@ -7,9 +7,9 @@ module Fastlane
         message_text = params[:message_text]
         is_exception = params[:is_exception]
         if is_exception
-          self.slack_func_notify(message_text)
-        else
           self.slack_func_notify_error_in_lane(message_text)
+        else
+          self.slack_func_notify(message_text)
         end       
         UI.message("Message sent to Slack!")
       end
@@ -64,7 +64,7 @@ module Fastlane
 
       
       #Notify an error of the lane and show the error that fastlane has
-      def slack_func_notify_error_in_lane(message_text)
+      def self.slack_func_notify_error_in_lane(message_text)
         payload = {
             "Build Date" => Time.new.to_s,
             "Error Message" => message_text
