@@ -13,7 +13,7 @@ module Fastlane
           icon_url: slack_icon,
           username: "Bemobile Fastlane Plugin - #{ENV["PRIVATE_APP_NAME"]}"
         )       
-        Helper::TestbmHelper.slack_func_notify("Message from helper.")
+        Helper::TestbmHelper.slack_func_notify("Message from")
         UI.message("Message sent to Slack!")
       end
 
@@ -36,7 +36,7 @@ module Fastlane
 
       def self.available_options
         [
-          FastlaneCore::ConfigItem.new(key: :chat_message,
+          FastlaneCore::ConfigItem.new(key: :message_text,
                                    env_name: "MESSAGE_TEXT",
                                 description: "The chat message to be sent to Slack",
                                    optional: false,
