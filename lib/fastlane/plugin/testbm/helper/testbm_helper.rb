@@ -13,7 +13,7 @@ module Fastlane
       end
 
       #Notify via slack channel a generic message with the default payloads
-      def slack_func_notify(message_text:)
+      def self.slack_func_notify(message_text:)
         other_action.slack(
             message: message_text,
             success: true,
