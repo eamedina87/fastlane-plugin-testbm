@@ -15,11 +15,11 @@ module Fastlane
       end
 
       def self.description
-        "Sends a message to a Slack chat specified in the SLACK_URL environment variable."
+        "Sends a message to a Slack chat specified in the SLACK_URL environment variable"
       end
 
       def self.authors
-        ["Erick, Legna @ Bemobile."]
+        ["Erick, Legna @ Bemobile"]
       end
 
       def self.return_value
@@ -43,7 +43,7 @@ module Fastlane
                                        type: String),
           FastlaneCore::ConfigItem.new(key: :is_exception,
                                    env_name: "IS_EXCEPTION",
-                                description: "Flag that indicates if the message is from an exception.",
+                                description: "Flag that indicates if the message is from an exception",
                                    optional: false,
                                        type: Boolean)
         ]
