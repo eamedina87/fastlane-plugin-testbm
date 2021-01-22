@@ -1,5 +1,5 @@
 require 'fastlane/action'
-require_relative '../helper/testbm_helper'
+require_relative '../helper/build_helper'
 
 module Fastlane
   module Actions
@@ -43,6 +43,46 @@ module Fastlane
         # [:ios, :mac, :android].include?(platform)
         true
       end
+
+      ##### Functions #######
+
+      ##Install pods, install and configure certs with given type, compile the ios app with given scheme  
+      def self.build_func_match_and_gym(app_information:)
+
+        cocoapods(try_repo_update_on_error: true, podfile: app_information[:ios][:podfile], use_bundle_exec: true)
+        
+        match(
+            type: app_information[:ios][:sign_config_type], 
+            readonly: true, 
+            clone_branch_directly: true, 
+            verbose: true)
+      
+        export_method = build_func_get_correct_export_method_name(match_type: app_information[:ios][:sign_config_type])
+              
+        gym(
+            scheme: app_information[:ios][:scheme_name],
+            export_method: export_method,
+            include_symbols: true,
+            include_bitcode: true,
+            workspace: app_information[:ios][:workspace],
+            output_name: "CompiledApp")
+      end
+
+      ##Install gradle dependencies and compile version 
+      def self.build_func_gradle(app_information:)
+        gradle(task: 'assemble', 
+              build_type: app_information[:android][:build_type],
+              project_dir: app_information[:android][:project_dir])
+      end
     end
   end
 end
+
+
+
+
+
+
+
+
+
