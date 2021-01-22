@@ -30,7 +30,7 @@ module Fastlane
         [
           FastlaneCore::ConfigItem.new(key: :app_information,
                                    env_name: "APP_INFORMATION",
-                                description: "The app information including name, version.",
+                                description: "The app information including name, version",
                                    optional: false,
                                        type: Array),
           FastlaneCore::ConfigItem.new(key: :platform_type,
