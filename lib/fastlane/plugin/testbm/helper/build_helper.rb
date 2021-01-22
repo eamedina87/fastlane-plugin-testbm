@@ -8,7 +8,7 @@ module Fastlane
       # class methods that you define here become available in your action
       # as `Helper::BuildHelper.your_method`
       #
-      def self.build_func_get_correct_export_method_name(match_type:)
+      def self.build_func_get_correct_export_method_name(match_type)
         #if match type is adhoc or appstore
         #export_method needs to be ad-hoc or app-store
         #this is a fix to use just one name for types

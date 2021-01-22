@@ -47,7 +47,7 @@ module Fastlane
       ##### Functions #######
 
       ##Install pods, install and configure certs with given type, compile the ios app with given scheme  
-      def self.build_func_match_and_gym(app_information:)
+      def self.build_func_match_and_gym(app_information)
 
         cocoapods(try_repo_update_on_error: true, podfile: app_information[:ios][:podfile], use_bundle_exec: true)
         

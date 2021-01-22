@@ -47,7 +47,7 @@ module Fastlane
       ##### Functions #######
 
       ##Install gradle dependencies and compile version 
-      def self.build_func_gradle(app_information:)
+      def self.build_func_gradle(app_information)
         gradle(task: 'assemble', 
               build_type: app_information[:android][:build_type],
               project_dir: app_information[:android][:project_dir])
