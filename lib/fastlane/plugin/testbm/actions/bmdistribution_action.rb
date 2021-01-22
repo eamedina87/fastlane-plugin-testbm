@@ -2,7 +2,7 @@ require 'fastlane/action'
 
 module Fastlane
   module Actions
-    class BmdistributionAction #< Action
+    class BmdistributionAction < Action
       def self.run(params)
         app_information = params[:app_information]
         platform_type = params[:platform_type]

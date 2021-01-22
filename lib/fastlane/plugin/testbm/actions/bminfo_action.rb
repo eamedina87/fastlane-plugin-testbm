@@ -2,7 +2,7 @@ require 'fastlane/action'
 
 module Fastlane
   module Actions
-    class BminfoAction #< Action
+    class BminfoAction < Action
       def self.run(params)
         environment = params[:environment]
         self.project_func_get_information(environment: environment)

@@ -32,7 +32,7 @@ module Fastlane
                                 description: "The person's name",
                                    optional: false,
                                        type: String)
-        ]
+        ]# If your method provides a return value, you can describe here what it does
       end
 
       def self.is_supported?(platform)
