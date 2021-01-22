@@ -2,7 +2,7 @@ require 'fastlane/action'
 
 module Fastlane
   module Actions
-    class BmversionAction < Action
+    class BmversionAction #< Action
       def self.run(params)
         platform_type = params[:platform_type]
         self.version_func_get_version(platform_type)
