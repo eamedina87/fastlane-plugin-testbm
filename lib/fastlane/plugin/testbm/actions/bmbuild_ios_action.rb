@@ -67,13 +67,6 @@ module Fastlane
             workspace: app_information[:ios][:workspace],
             output_name: "CompiledApp")
       end
-
-      ##Install gradle dependencies and compile version 
-      def self.build_func_gradle(app_information:)
-        gradle(task: 'assemble', 
-              build_type: app_information[:android][:build_type],
-              project_dir: app_information[:android][:project_dir])
-      end
     end
   end
 end
