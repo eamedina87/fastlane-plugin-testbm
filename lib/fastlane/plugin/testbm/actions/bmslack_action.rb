@@ -5,7 +5,7 @@ module Fastlane
     class BmslackAction < Action
       def self.run(params)
         message_text = params[:message_text]
-        is_exception = params[:is_exception]
+        is_exception = params[:is_exception] || false
         if is_exception
           self.slack_func_notify_error_in_lane(message_text)
         else
@@ -19,7 +19,7 @@ module Fastlane
       end
 
       def self.authors
-        ["Erick, Legna @ Bemobile"]
+        ["Bemobile"]
       end
 
       def self.return_value
@@ -44,7 +44,7 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :is_exception,
                                    env_name: "IS_EXCEPTION",
                                 description: "Flag that indicates if the message is from an exception",
-                                   optional: false,
+                                   optional: true,
                                        type: Boolean)
         ]
       end
