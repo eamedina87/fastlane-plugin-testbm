@@ -32,7 +32,7 @@ module Fastlane
                                    env_name: "APP_INFORMATION",
                                 description: "The app information including name, version",
                                    optional: false,
-                                       type: Array),
+                                       type: Hash),
           FastlaneCore::ConfigItem.new(key: :platform_type,
                                    env_name: "PLATFORM_TYPE",
                                 description: "Indicates platform wheter android or ios",
