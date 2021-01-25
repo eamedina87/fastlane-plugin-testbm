@@ -32,8 +32,8 @@ module Fastlane
             version_number = Actions.lane_context[Actions::SharedValues::VERSION_NUMBER]
             build_number = Actions.lane_context[Actions::SharedValues::BUILD_NUMBER]
         elsif
-            version_number = File.read("./../version.name").to_s  
-            build_number = File.read("./../version.number").to_s  
+            version_number = File.read("../version.name").to_s  
+            build_number = File.read("../version.number").to_s  
         end
     
         {build_number: build_number, version_number: version_number}
